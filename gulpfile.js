@@ -21,18 +21,18 @@ var gulp = require('gulp'),
  */
 
 gulp.task('del-build', function() {
-    del(['build/*'], function(err) {
-        console.log("build/ files deleted");
+    del(['app/build/*'], function(err) {
+        console.log("app/build/ files deleted");
     });
 });
 
 gulp.task('del-dist', function() {
-    del(['dist/*'], function(err) {
-        console.log("build/ files deleted");
+    del(['app/dist/*'], function(err) {
+        console.log("app/dist/ files deleted");
     });
 });
 
- gulp.task('templates', function(){
+gulp.task('templates', function(){
     gulp.src(['app/templates/**/*.hbs'])
         .pipe(handlebars())
         .pipe(wrap('Handlebars.template(<%= contents %>)'))
@@ -40,11 +40,12 @@ gulp.task('del-dist', function() {
             namespace: '__templates',
             noRedeclare: true
         }))
-        .pipe(concate('templates.js'))
-        .pipe(gulp.dest('templates/'));
+        .pipe(concat('templates.js'))
+        .pipe(gulp.dest('app/templates/'));
 });
 
- gulp.task('js-build', ['templates'], function() {
+// ['templates'],
+gulp.task('js-build', function() {
     gulp.src([
         // dependencies
         'bower_components/jquery/dist/jquery.js',
@@ -53,31 +54,31 @@ gulp.task('del-dist', function() {
         'bower_components/underscore/underscore.js',
         'bower_components/backbone/backbone.js',
         // app
+        'app/app.js',
         'app/templates/templates.js',
         'app/utils/handlebars-helpers.js',
         'app/models/*.js',
         'app/collections/*.js',
         'app/views/*.js',
-        'app/routes/*.js',
-        'app/app.js'
+        'app/routes/*.js'
     ])
-    .pipe(concate('bundle.js'))
+    .pipe(concat('bundle.js'))
     .pipe(size({
         title: 'JS size:'
     }))
-    .pipe(gulp.dest('build/scripts/'));
+    .pipe(gulp.dest('app/build/scripts/'));
 });
 
 gulp.task('js-dist', function() {
     gulp.src([
-        'build/scripts/bundle.js',
+        'app/build/scripts/bundle.js',
     ])
     .pipe(uglify())
     .pipe(rename({suffix: '.min'}))
     .pipe(size({
         title: 'JS size:'
     }))
-    .pipe(gulp.dest('dist/'));
+    .pipe(gulp.dest('app/dist/'));
 });
 
 gulp.task('styles-build', function() {
@@ -87,22 +88,22 @@ gulp.task('styles-build', function() {
         .pipe(autoprefixer({
             browsers: ['last 5 versions','Firefox ESR']
         }))
-        .pipe(concate('bundle.css'))
+        .pipe(concat('bundle.css'))
         .pipe(size({
             title: 'CSS size:'
         }))
-        .pipe(gulp.dest('build/styles/'));
+        .pipe(gulp.dest('app/build/styles/'));
 });
 
 gulp.task('styles-dist', function() {
     gulp.src([
-            'build/styles/bundle.css'
+            'app/build/styles/bundle.css'
         ])
         .pipe(minifyCSS())
         .pipe(size({
             title: 'CSS size:'
         }))
-        .pipe(gulp.dest('dist/'));
+        .pipe(gulp.dest('app/dist/'));
 });
 
 gulp.task('default', ['del-build', 'js-build', 'styles-build']);
