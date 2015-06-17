@@ -1,0 +1,14 @@
+{
+  "name": "syi-resell",
+  "version": "0.0.0",
+  "description": "Resell SPA",
+  "author": "Matías M. Méndez <matimendez88@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "underscore": "~1.8.3",
+    "jquery": "~2.1.4",
+    "backbone": "~1.2.1",
+    "chico": "https://github.com/mercadolibre/chico.git#~1.2.1",
+    "handlebars": "~3.0.3"
+  }
+}
