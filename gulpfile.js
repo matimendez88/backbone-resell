@@ -21,14 +21,14 @@ var gulp = require('gulp'),
  */
 
 gulp.task('del-build', function() {
-    del(['app/build/*'], function(err) {
-        console.log("app/build/ files deleted");
+    del(['build/*'], function(err) {
+        console.log("build/ files deleted");
     });
 });
 
 gulp.task('del-dist', function() {
-    del(['app/dist/*'], function(err) {
-        console.log("app/dist/ files deleted");
+    del(['dist/*'], function(err) {
+        console.log("dist/ files deleted");
     });
 });
 
@@ -66,19 +66,19 @@ gulp.task('js-build', function() {
     .pipe(size({
         title: 'JS size:'
     }))
-    .pipe(gulp.dest('app/build/scripts/'));
+    .pipe(gulp.dest('build/scripts/'));
 });
 
 gulp.task('js-dist', function() {
     gulp.src([
-        'app/build/scripts/bundle.js',
+        'build/scripts/bundle.js',
     ])
     .pipe(uglify())
     .pipe(rename({suffix: '.min'}))
     .pipe(size({
         title: 'JS size:'
     }))
-    .pipe(gulp.dest('app/dist/'));
+    .pipe(gulp.dest('dist/'));
 });
 
 gulp.task('styles-build', function() {
@@ -92,18 +92,18 @@ gulp.task('styles-build', function() {
         .pipe(size({
             title: 'CSS size:'
         }))
-        .pipe(gulp.dest('app/build/styles/'));
+        .pipe(gulp.dest('build/styles/'));
 });
 
 gulp.task('styles-dist', function() {
     gulp.src([
-            'app/build/styles/bundle.css'
+            'build/styles/bundle.css'
         ])
         .pipe(minifyCSS())
         .pipe(size({
             title: 'CSS size:'
         }))
-        .pipe(gulp.dest('app/dist/'));
+        .pipe(gulp.dest('dist/'));
 });
 
 gulp.task('default', ['del-build', 'js-build', 'styles-build']);
