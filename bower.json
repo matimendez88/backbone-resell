@@ -9,6 +9,7 @@
     "jquery": "~2.1.4",
     "backbone": "~1.2.1",
     "chico": "https://github.com/mercadolibre/chico.git#~1.2.1",
-    "handlebars": "~3.0.3"
+    "handlebars": "~3.0.3",
+    "masonry": "~3.3.0"
   }
 }

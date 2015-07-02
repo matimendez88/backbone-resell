@@ -53,6 +53,7 @@ gulp.task('js-build', function() {
         'bower_components/handlebars/handlebars.js',
         'bower_components/underscore/underscore.js',
         'bower_components/backbone/backbone.js',
+        'bower_components/masonry/dist/masonry.pkgd.js',
         // app
         'app/app.js',
         'app/templates/templates.js',
