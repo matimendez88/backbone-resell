@@ -1663,15 +1663,11 @@
 
             $('[data-js="modifyBtn"], [data-js="resellBtn"]').on('click', function() {
                 var that = this,
-                timeoutTime = 10;
+                timeoutTime = 50;
                 if( $(this).parent().parent().parent().hasClass('flip') ) {
-                    $(this).parent().parent().prev().css({'display': 'block'});
-                    setTimeout(function() {
-                        console.log("entró");
+                    setTimeout( function() {
                         $(that).parent().parent().parent().removeClass('flip');
                         $(that).parent().parent().one('webkitTransitionEnd', function(event) {
-                            console.log("END else matiiiiiiii!");
-                            $(that).parent().parent().css({'display': 'none'});
                             setTimeout( function() {
                                 $('.grid').masonry({
                                     itemSelector: '.grid-item'
@@ -1680,13 +1676,12 @@
                         });
                     }, timeoutTime);
                 } else {
-                    $(this).parent().parent().next().css({'display': 'block'});
-                    setTimeout(function() {
-                        console.log("entró");
-                        $(that).parent().parent().parent().addClass('flip');
+                    $(this).parent().parent().next().css({'z-index': '9999'});
+                    $(this).parent().parent().css({'z-index': '9999'});
+                    console.log("actual -> ", $(this).parent().parent());
+                    $(that).parent().parent().parent().addClass('flip');
+                    setTimeout( function() {
                         $(that).parent().parent().one('webkitTransitionEnd', function(event) {
-                            console.log("END else!");
-                            $(that).parent().parent().css({'display': 'none'});
                             setTimeout( function() {
                                 $('.grid').masonry({
                                     itemSelector: '.grid-item'
