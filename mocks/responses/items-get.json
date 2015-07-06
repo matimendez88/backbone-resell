@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "title": "Ipad mini",
+        "price": 8999,
+        "picture": "http://mla-s2-p.mlstatic.com/ipad-ipad-tablets-21645-MLA20214666689_122014-B.jpg",
+        "quantity": 3,
+        "visits": 144,
+        "sells": 12,
+        "listingType": "Bronce"
+    },
+    {
+        "id": 2,
+        "title": "MacBook Pro",
+        "price": 29999,
+        "picture": "http://mla-d1-p.mlstatic.com/macbook-apple-679101-MLA20285701837_042015-B.jpg",
+        "quantity": 7,
+        "visits": 630,
+        "sells": 5,
+        "listingType": "Plata"
+    }
+]
