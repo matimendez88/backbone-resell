@@ -41,6 +41,9 @@ gulp.task('templates', function(){
             noRedeclare: true
         }))
         .pipe(concat('templates.js'))
+        .pipe(size({
+            title: 'JS size:'
+        }))
         .pipe(gulp.dest('app/templates/'));
 });
 
@@ -54,6 +57,7 @@ gulp.task('js-build', function() {
         'bower_components/underscore/underscore.js',
         'bower_components/backbone/backbone.js',
         'bower_components/masonry/dist/masonry.pkgd.js',
+        'bower_components/jquery-mockjax/dist/jquery.mockjax.min.js',
         // app
         'app/app.js',
         'app/templates/templates.js',
@@ -61,7 +65,8 @@ gulp.task('js-build', function() {
         'app/models/*.js',
         'app/collections/*.js',
         'app/views/*.js',
-        'app/routes/*.js'
+        'app/router.js',
+        'mocks/mock.js'
     ])
     .pipe(concat('bundle.js'))
     .pipe(size({
@@ -107,7 +112,7 @@ gulp.task('styles-dist', function() {
         .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('default', ['del-build', 'js-build', 'styles-build']);
+gulp.task('default', ['del-build', 'templates', 'js-build', 'styles-build']);
 
 gulp.task('build', ['default']);
 
@@ -123,7 +128,8 @@ gulp.task('watch', function() {
         'gulpfile.js',
         'app/templates/**/*.hbs',
         'app/*.js',
-        'app/**/*.js'
-    ], ['js-build']);
+        'app/**/*.js',
+        'mocks/mock.js'
+    ], ['default']);
     gulp.watch('app/styles/*.css', ['styles-build']);
 });
