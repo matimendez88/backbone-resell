@@ -1,102 +1,100 @@
-<div class="item-container-back">
-    <a href="#" class="item-image-container">
-        <img src="{{picture}}" alt="" width="100" height="100" />
-    </a>
-    <div class="item-details">
-        <div class="item-title-container">
-            <input type="text" value="{{title}}" maxlength="60" size="30" />
-        </div>
-        <div class="item-price-container">
-            <label for="price">Precio: $</label>
-            <input type="text" value="{{price}}" id="price" maxlength="10" />
-        </div>
-        <div class="item-quantity-container">
-            <label for="quantity">Cantidad: </label>
-            <input type="text" value="{{quantity}}" id="quantity" maxlength="4" size="4" />
-        </div>
-        <div class="item-dragged-container">
-            <label>Acumula: </label>
-            <div class="item-dragged-pill">
-                <span>
-                    Visitas
-                    <i class="syi-icon-user"></i>
-                    <strong class="dragged-visits">{{visits}}</strong>
-                </span>
-                <span>
-                    Ventas
-                    <i class="syi-icon-basket"></i>
-                    <strong class="dragged-sales">{{sells}}</strong>
-                </span>
-            </div>
-        </div>
-        <div class="item-listing-container">
-            <h3>Visitas estimadas para esta categoría *</h3>
-            <ul>
-                {{!-- {{listingType}} --}}
-                <li class="listing-type">
-                    <input name="listing" id="goldPro" value="" type="radio">
-                    <label for="goldPro" class="">
-                        <span class="">Oro Premium</span>
-                    </label>
-                    <label for="goldPro" class="">
-                        <strong class="">9 veces</strong> más visitas
-                        <i class="ch-icon-help-sign"></i>
-                    </label>
-                </li>
-                <li class="listing-type">
-                    <input name="listing" id="gold" value="" type="radio">
-                    <label for="gold" class="">
-                        <span class="">Oro</span>
-                    </label>
-                    <label for="gold" class="">
-                        <strong class="">7 veces</strong> más visitas
-                        <i class="ch-icon-help-sign"></i>
-                    </label>
-                </li>
-                <li class="listing-type">
-                    <input name="listing" id="silver" value="" type="radio">
-                    <label for="silver" class="">
-                        <span class="">Plata</span>
-                    </label>
-                    <label for="silver" class="">
-                        <strong class="">5 veces</strong> más visitas
-                        <i class="ch-icon-help-sign"></i>
-                    </label>
-                </li>
-                <li class="listing-type">
-                    <input name="listing" id="bronze" value="" type="radio">
-                    <label for="bronze" class="">
-                        <span class="">Bronce</span>
-                    </label>
-                    <label for="bronze" class="">
-                        <strong class="">Actual</strong>
-                        <i class="ch-icon-help-sign"></i>
-                    </label>
-                </li>
-                <li class="listing-type">
-                    <input name="listing" id="free" value="" type="radio">
-                    <label for="free" class="">
-                        <span class="">Gratuita</span>
-                    </label>
-                    <label for="free" class="">
-                        1 vez menos visitas
-                        <i class="ch-icon-help-sign"></i>
-                    </label>
-                </li>
-            </ul>
-        </div>
-        <div class="item-ammounts-container">
-            <h4>Costo por republicar</h4>
-            <div class="price-resell">
-                <span class="ch-price">$ 0<sup>00</sup></span>
-            </div>
-            <h4 class="">Costo por cada venta</h4>
-            <div class="price-per-sell" data-js="">
-                <span class="ch-price">$ 88<sup>00</sup></span>
-            </div>
+<a href="#" class="item-image-container">
+    <img src="{{picture}}" alt="" width="100" height="100" />
+</a>
+<div class="item-details">
+    <div class="item-title-container">
+        <input type="text" value="{{title}}" maxlength="60" size="30" />
+    </div>
+    <div class="item-price-container">
+        <label for="price">Precio: $</label>
+        <input type="text" value="{{price}}" id="price" maxlength="10" />
+    </div>
+    <div class="item-quantity-container">
+        <label for="quantity">Cantidad: </label>
+        <input type="text" value="{{quantity}}" id="quantity" maxlength="4" size="4" />
+    </div>
+    <div class="item-dragged-container">
+        <label>Acumula: </label>
+        <div class="item-dragged-pill">
+            <span>
+                Visitas
+                <i class="syi-icon-user"></i>
+                <strong class="dragged-visits">{{visits}}</strong>
+            </span>
+            <span>
+                Ventas
+                <i class="syi-icon-basket"></i>
+                <strong class="dragged-sales">{{sells}}</strong>
+            </span>
         </div>
     </div>
-    <div class="item-action-container">
-        <input type="submit" name="" value="Republicar" class="ch-btn ch-btn-large" data-js="resellBtn">
+    <div class="item-listing-container">
+        <h3>Visitas estimadas para esta categoría *</h3>
+        <ul>
+            {{!-- {{listingType}} --}}
+            <li class="listing-type">
+                <input name="listing" id="goldPro" value="" type="radio">
+                <label for="goldPro" class="">
+                    <span class="">Oro Premium</span>
+                </label>
+                <label for="goldPro" class="">
+                    <strong class="">9 veces</strong> más visitas
+                    <i class="ch-icon-help-sign"></i>
+                </label>
+            </li>
+            <li class="listing-type">
+                <input name="listing" id="gold" value="" type="radio">
+                <label for="gold" class="">
+                    <span class="">Oro</span>
+                </label>
+                <label for="gold" class="">
+                    <strong class="">7 veces</strong> más visitas
+                    <i class="ch-icon-help-sign"></i>
+                </label>
+            </li>
+            <li class="listing-type">
+                <input name="listing" id="silver" value="" type="radio">
+                <label for="silver" class="">
+                    <span class="">Plata</span>
+                </label>
+                <label for="silver" class="">
+                    <strong class="">5 veces</strong> más visitas
+                    <i class="ch-icon-help-sign"></i>
+                </label>
+            </li>
+            <li class="listing-type">
+                <input name="listing" id="bronze" value="" type="radio">
+                <label for="bronze" class="">
+                    <span class="">Bronce</span>
+                </label>
+                <label for="bronze" class="">
+                    <strong class="">Actual</strong>
+                    <i class="ch-icon-help-sign"></i>
+                </label>
+            </li>
+            <li class="listing-type">
+                <input name="listing" id="free" value="" type="radio">
+                <label for="free" class="">
+                    <span class="">Gratuita</span>
+                </label>
+                <label for="free" class="">
+                    1 vez menos visitas
+                    <i class="ch-icon-help-sign"></i>
+                </label>
+            </li>
+        </ul>
     </div>
+    <div class="item-ammounts-container">
+        <h4>Costo por republicar</h4>
+        <div class="price-resell">
+            <span class="ch-price">$ 0<sup>00</sup></span>
+        </div>
+        <h4 class="">Costo por cada venta</h4>
+        <div class="price-per-sell" data-js="">
+            <span class="ch-price">$ 88<sup>00</sup></span>
+        </div>
+    </div>
+</div>
+<div class="item-action-container">
+    <input type="submit" name="" value="Republicar" class="ch-btn ch-btn-large" data-js="resellBtn">
 </div>

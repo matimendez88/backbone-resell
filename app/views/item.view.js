@@ -1,24 +1,32 @@
 Resell.Views.Item = Backbone.View.extend({
     tagName: 'li',
     className: 'item-container grid-item',
-
-    events: {},
-
-    template: function(model) {
-        if (this.isEditing) {
-            return __templates.itemBack(model);
-        } else {
-            return __templates.itemFront(model);
-        }
-    },
     
     initialize: function() {
-        this.isEditing = false;
-        this.render();
-    },
+        var that = this;
+        
+        this.itemFrontView = {};
+        this.itemBackView = {};
 
-    render: function() {
-        this.$el.html(this.template(this.model.toJSON()));
-        return this;
+        this.itemFrontView = new Resell.Views.ItemFront({
+            model: this.model
+        });
+        this.$el.append(this.itemFrontView.el);
+
+        that.itemBackView = new Resell.Views.ItemBack({
+            model: that.model
+        });
+        this.$el.append(this.itemBackView.el);
+
+        this.itemFrontView.on('Item:modify', function(data) {
+            that.$el.addClass('flip');
+            that.trigger('change');
+        });
+
+        this.itemBackView.on('Item:save', function(data) {
+            that.itemFrontView.render();
+            that.$el.removeClass('flip');
+            that.trigger('change');
+        });
     }
 });

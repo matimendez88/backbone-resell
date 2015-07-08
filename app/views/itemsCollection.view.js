@@ -1,25 +1,40 @@
 Resell.Views.Items = Backbone.View.extend({
-    el: '#app ul',
+    tagName: 'ul',
+    className: 'grid',
 
     events: {},
 
     initialize: function(){
         var that = this;
-
-        this.collection.on('add', function() {
+        
+        this.collection.on('fetched', function() {
             that.render();
         });
     },
 
     render: function(){
-        $('#app ul').empty();
+        var that = this;
 
         _.each(this.collection.models, function(model, i){
+            console.log(model);
+
             var itemView = new Resell.Views.Item({
                 model: model
             });
 
-            $('#app ul').append(itemView.el);
+            that.$el.append(itemView.el);
+
+            itemView.on('change', function() {
+                that.refreshGrid();
+            });
+        });
+
+        this.refreshGrid();
+    },
+
+    refreshGrid: function() {
+        this.$el.masonry({
+            itemSelector: '.grid-item'
         });
     }
 });

@@ -76,40 +76,40 @@
     <script>
         $(document).ready(function(){
 
-            $('[data-js="modifyBtn"], [data-js="resellBtn"]').on('click', function() {
-                var that = this,
-                timeoutTime = 50;
-                if( $(this).parent().parent().parent().hasClass('flip') ) {
-                    setTimeout( function() {
-                        $(that).parent().parent().parent().removeClass('flip');
-                        $(that).parent().parent().one('webkitTransitionEnd', function(event) {
-                            setTimeout( function() {
-                                $('.grid').masonry({
-                                    itemSelector: '.grid-item'
-                                });
-                            }, timeoutTime);
-                        });
-                    }, timeoutTime);
-                } else {
-                    $(this).parent().parent().next().css({'z-index': '9999'});
-                    $(this).parent().parent().css({'z-index': '9999'});
-                    console.log("actual -> ", $(this).parent().parent());
-                    $(that).parent().parent().parent().addClass('flip');
-                    setTimeout( function() {
-                        $(that).parent().parent().one('webkitTransitionEnd', function(event) {
-                            setTimeout( function() {
-                                $('.grid').masonry({
-                                    itemSelector: '.grid-item'
-                                });
-                            }, timeoutTime);
-                        });
-                    }, timeoutTime);
-                }
-            });
+            // $('[data-js="modifyBtn"], [data-js="resellBtn"]').on('click', function() {
+            // $('#app').on('click', '[data-js="modifyBtn"], [data-js="resellBtn"]', function() {
+            //     var that = this,
+            //     timeoutTime = 50;
+            //     if( $(this).parent().parent().parent().hasClass('flip') ) {
+            //         setTimeout( function() {
+            //             $(that).parent().parent().parent().removeClass('flip');
+            //             $(that).parent().parent().one('webkitTransitionEnd', function(event) {
+            //                 setTimeout( function() {
+            //                     $('.grid').masonry({
+            //                         itemSelector: '.grid-item'
+            //                     });
+            //                 }, timeoutTime);
+            //             });
+            //         }, timeoutTime);
+            //     } else {
+            //         $(this).parent().parent().next().css({'z-index': '9999'});
+            //         $(this).parent().parent().css({'z-index': '9999'});
+            //         $(that).parent().parent().parent().addClass('flip');
+            //         setTimeout( function() {
+            //             $(that).parent().parent().one('webkitTransitionEnd', function(event) {
+            //                 setTimeout( function() {
+            //                     $('.grid').masonry({
+            //                         itemSelector: '.grid-item'
+            //                     });
+            //                 }, timeoutTime);
+            //             });
+            //         }, timeoutTime);
+            //     }
+            // });
 
-            $('.grid').masonry({
-                itemSelector: '.grid-item'
-            });
+            // $('.grid').masonry({
+            //     itemSelector: '.grid-item'
+            // });
 
         });
     </script>
