@@ -14,9 +14,8 @@ Resell.Views.Items = Backbone.View.extend({
 
     render: function(){
         var that = this;
-
+console.log("this ----> ", this);
         _.each(this.collection.models, function(model, i){
-            console.log(model);
 
             var itemView = new Resell.Views.Item({
                 model: model

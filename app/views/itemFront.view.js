@@ -18,7 +18,6 @@ Resell.Views.ItemFront = Backbone.View.extend({
     },
 
     modifyItem: function() {
-        console.log("modifyItem");
         this.trigger('Item:modify');
     }
 });
