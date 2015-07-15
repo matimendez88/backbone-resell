@@ -1,11 +1,16 @@
 Resell.Views.Items = Backbone.View.extend({
-    tagName: 'ul',
-    className: 'grid',
 
-    events: {},
+    template: __templates.actions,
 
-    initialize: function(){
+    events: {
+        'click [data-js="modifyAll"]': 'modifyAll',
+        'click [data-js="resellAll"]': 'resellAll'
+    },
+
+    initialize: function(options){
         var that = this;
+        
+        this.listingsCollection = options.listingsCollection;
         
         this.collection.on('fetched', function() {
             that.render();
@@ -14,17 +19,27 @@ Resell.Views.Items = Backbone.View.extend({
 
     render: function(){
         var that = this;
-console.log("this ----> ", this);
-        _.each(this.collection.models, function(model, i){
 
+        that.$el.append(this.template());
+
+        _.each(this.collection.models, function(model, i){
             var itemView = new Resell.Views.Item({
-                model: model
+                model: model,
+                listingsCollection: that.listingsCollection
             });
 
-            that.$el.append(itemView.el);
+            that.$("ul").append(itemView.el);
 
             itemView.on('change', function() {
                 that.refreshGrid();
+            });
+
+            that.on('Items:modifyAll', function() {
+                itemView.trigger('Item:modifyAll');
+            });
+
+            that.on('Items:resellAll', function() {
+                itemView.trigger('Item:resellAll');
             });
         });
 
@@ -35,5 +50,13 @@ console.log("this ----> ", this);
         this.$el.masonry({
             itemSelector: '.grid-item'
         });
+    },
+
+    modifyAll: function() {
+        this.trigger('Items:modifyAll');
+    },
+
+    resellAll: function() {
+        this.trigger('Items:resellAll');
     }
 });

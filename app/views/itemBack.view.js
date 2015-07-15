@@ -7,21 +7,38 @@ Resell.Views.ItemBack = Backbone.View.extend({
     },
 
     template: __templates.itemBack,
-    
-    initialize: function() {
-        this.render();
+
+    initialize: function(options) {
+        var that = this;
+
+        this.listingsCollection = options.listingsCollection;
+
+        this.listingsCollection.on('fetched', function() {
+            that.render();
+        });
     },
 
     render: function() {
-        this.$el.html(this.template(this.model.toJSON()));
+        var data = {
+            listings: this.listingsCollection.toJSON(),
+            model: this.model.toJSON()
+        };
+
+        this.$el.html(this.template(data));
         return this;
     },
 
     saveItem: function() {
+        var listingIdAttr = this.$('input:checked').attr('id'),
+            listingId = listingIdAttr.split("-")[0],
+            listingType = this.$('input:checked').attr('value');
+
         this.model.set({
             title: this.$('.item-title-container input').val(),
             price: this.$('.item-price-container input').val(),
-            quantity: this.$('.item-quantity-container input').val()
+            quantity: this.$('.item-quantity-container input').val(),
+            listingId: listingId,
+            listingType: listingType
         });
         this.model.save();
         this.trigger('Item:save');

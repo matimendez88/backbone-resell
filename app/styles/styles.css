@@ -66,6 +66,9 @@
 
 /* Masonry
 ---------------------------------------------------------------*/
+.grid {
+    position: relative;
+}
 
 .grid-item {
     width: 300px;
@@ -91,7 +94,7 @@
 .item-container {
     float: left;
     list-style-type: none;
-    margin: 10px;
+    margin: 20px 10px 10px;
     -webkit-perspective: 600px;
     -moz-perspective: 600px;
     perspective: 600px;
@@ -200,6 +203,17 @@
         font-size: 14px;
     }
 
+    .item-listing-container li {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        padding: 5px;
+    }
+
+    .item-listing-container li input {
+        margin-right: 5px;
+    }
+
 .item-dragged-container {}
 
 .item-dragged-pill {
@@ -242,3 +256,16 @@
     font-size: 11px;
     margin: 0 0 5px;
 }
+
+.actions-container {
+    margin: 20px 10px 0;
+}
+
+.filters {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+    .filters p {
+        display: inline-block;
+    }

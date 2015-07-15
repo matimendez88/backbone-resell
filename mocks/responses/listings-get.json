@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "listingId": "free",
+        "name": "Gratuita",
+        "resellCost": 0,
+        "sellCost": 0
+    },
+    {
+        "id": 2,
+        "listingId": "bronze",
+        "name": "Bronce",
+        "resellCost": 50,
+        "sellCost": 10
+    },
+    {
+        "id": 3,
+        "listingId": "silver",
+        "name": "Silver",
+        "resellCost": 100,
+        "sellCost": 100
+    },
+    {
+        "id": 4,
+        "listingId": "gold",
+        "name": "Oro",
+        "resellCost": 150,
+        "sellCost": 200
+    },
+    {
+        "id": 5,
+        "listingId": "goldPro",
+        "name": "Oro Premium",
+        "resellCost": 200,
+        "sellCost": 300
+    }
+]

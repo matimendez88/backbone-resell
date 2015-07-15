@@ -13,8 +13,16 @@ var Router = Backbone.Router.extend({
             }
         });
 
+        var listingsCollection = new Resell.Collections.Listings();
+        listingsCollection.fetch({
+            'success': function(collection, response, options) {
+                collection.trigger('fetched');
+            }
+        });
+
         var itemsCollectionView = new Resell.Views.Items({
-            collection: itemsCollection
+            collection: itemsCollection,
+            listingsCollection: listingsCollection
         });
 
         $('#app').html(itemsCollectionView.el);
