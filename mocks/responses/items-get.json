@@ -7,6 +7,7 @@
         "quantity": 99,
         "visits": 1900,
         "sells": 930,
+        "listingId": "goldPro",
         "listingType": "Oro Premium"
     },
     {
@@ -17,6 +18,7 @@
         "quantity": 7,
         "visits": 630,
         "sells": 5,
+        "listingId": "silver",
         "listingType": "Plata"
     },
     {
@@ -27,6 +29,7 @@
         "quantity": 25,
         "visits": 340,
         "sells": 51,
+        "listingId": "gold",
         "listingType": "Oro"
     },
     {
@@ -37,6 +40,7 @@
         "quantity": 99,
         "visits": 54,
         "sells": 2,
+        "listingId": "free",
         "listingType": "Gratuita"
     },
     {
@@ -47,6 +51,7 @@
         "quantity": 1,
         "visits": 203,
         "sells": 0,
+        "listingId": "goldPro",
         "listingType": "Oro Premium"
     },
     {
@@ -57,6 +62,7 @@
         "quantity": 30,
         "visits": 720,
         "sells": 4,
+        "listingId": "silver",
         "listingType": "Plata"
     },
     {
@@ -67,6 +73,7 @@
         "quantity": 75,
         "visits": 932,
         "sells": 47,
+        "listingId": "gold",
         "listingType": "Oro"
     },
     {
@@ -77,6 +84,7 @@
         "quantity": 3,
         "visits": 144,
         "sells": 12,
+        "listingId": "bronze",
         "listingType": "Bronce"
     },
     {
@@ -87,6 +95,7 @@
         "quantity": 99,
         "visits": 1900,
         "sells": 930,
+        "listingId": "goldPro",
         "listingType": "Oro Premium"
     },
     {
@@ -97,6 +106,7 @@
         "quantity": 7,
         "visits": 630,
         "sells": 5,
+        "listingId": "silver",
         "listingType": "Plata"
     },
     {
@@ -107,6 +117,7 @@
         "quantity": 25,
         "visits": 340,
         "sells": 51,
+        "listingId": "gold",
         "listingType": "Oro"
     },
     {
@@ -117,6 +128,7 @@
         "quantity": 99,
         "visits": 54,
         "sells": 2,
+        "listingId": "free",
         "listingType": "Gratuita"
     },
     {
@@ -127,6 +139,7 @@
         "quantity": 1,
         "visits": 203,
         "sells": 0,
+        "listingId": "goldPro",
         "listingType": "Oro Premium"
     },
     {
@@ -137,6 +150,7 @@
         "quantity": 30,
         "visits": 720,
         "sells": 4,
+        "listingId": "silver",
         "listingType": "Plata"
     },
     {
@@ -147,6 +161,7 @@
         "quantity": 75,
         "visits": 932,
         "sells": 47,
+        "listingId": "gold",
         "listingType": "Oro"
     },
     {
@@ -157,6 +172,7 @@
         "quantity": 3,
         "visits": 144,
         "sells": 12,
+        "listingId": "bronze",
         "listingType": "Bronce"
     }
 ]
