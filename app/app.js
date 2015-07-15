@@ -1,5 +1,6 @@
 var Resell = {
     Models: {},
     Collections: {},
-    Views: {}
+    Views: {},
+    Cache: {}
 };
