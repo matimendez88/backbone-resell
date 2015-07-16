@@ -3,7 +3,9 @@ var Router = Backbone.Router.extend({
         "": "index"
     },
 
-    initialize: function() {},
+    initialize: function() {
+        this.index();
+    },
 
     index: function() {
         var itemsCollection = new Resell.Collections.Items();
