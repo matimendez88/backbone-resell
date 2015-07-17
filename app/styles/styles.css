@@ -269,3 +269,7 @@
     .filters p {
         display: inline-block;
     }
+
+.actions-container .ch-btn:focus {
+    outline: none;
+}
