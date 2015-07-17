@@ -5,7 +5,7 @@ Resell.Views.Items = Backbone.View.extend({
     events: {
         'click [data-js="modifyAll"]': 'modifyAll',
         'click [data-js="resellAll"]': 'resellAll',
-        'change select': 'ListingFilter'
+        'change select': 'listingFilter'
     },
 
     initialize: function(options){
@@ -29,20 +29,30 @@ Resell.Views.Items = Backbone.View.extend({
     },
 
     refreshGrid: function() {
+        var that = this;
+
         this.$el.masonry({
             itemSelector: '.grid-item'
         });
+
+        this.$el.masonry('reloadItems');   
+        this.$el.masonry('layout');
     },
 
     modifyAll: function() {
         this.trigger('Items:modifyAll');
+        $('[data-js="modifyAll"]').addClass('ch-btn-disabled');
+        $('[data-js="resellAll"]').removeClass('ch-btn-disabled');
+
     },
 
     resellAll: function() {
         this.trigger('Items:resellAll');
+        $('[data-js="modifyAll"]').removeClass('ch-btn-disabled');
+        $('[data-js="resellAll"]').addClass('ch-btn-disabled');
     },
 
-    ListingFilter: function(event) {
+    listingFilter: function(event) {
         var that = this,
             listingId = event.target.value,
             filteredListings = this.collection.filter(function(model) {
