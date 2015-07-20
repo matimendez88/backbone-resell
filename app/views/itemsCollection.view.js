@@ -11,20 +11,19 @@ Resell.Views.Items = Backbone.View.extend({
     initialize: function(options){
         var that = this;
 
-        Resell.Cache.ItemsCollection = this.collection;
-
         this.listingsCollection = options.listingsCollection;
         
         this.collection.on('fetched', function() {
+            Resell.Cache.ItemsCollection = new Backbone.Collection(that.collection.toJSON());
             that.render();
         });
+
+        window.arr = [];
     },
 
     render: function(){
         var that = this;
-
         this.$el.append(this.template());
-
         this.iterateCollection();
     },
 
@@ -55,21 +54,26 @@ Resell.Views.Items = Backbone.View.extend({
     listingFilter: function(event) {
         var that = this,
             listingId = event.target.value,
-            filteredListings = this.collection.filter(function(model) {
-                return event.target.value === 'all' ? Resell.Cache.ItemsCollection : model.get("listingId") === listingId;
-            });
+            filtered;
 
+        filtered = Resell.Cache.ItemsCollection.filter(function(model) {
+            return event.target.value === 'all' ? Resell.Cache.ItemsCollection : model.get("listingId") === listingId;
+        });
+
+        this.collection.reset(filtered);
+
+        this.trigger('ItemViews:remove');
         this.$("ul").empty();
 
-        this.iterateCollection(filteredListings);
+        this.iterateCollection();
         this.listingsCollection.trigger('fetched');
     },
 
-    iterateCollection: function(collection) {
-        var that = this,
-            filteredCollection = collection || Resell.Cache.ItemsCollection.models;
+    iterateCollection: function() {
+        console.log("ITERA");
+        var that = this;
 
-        _.each(filteredCollection, function(model, i){
+        _.each(this.collection.models, function(model, i){
             var itemView = new Resell.Views.Item({
                 model: model,
                 listingsCollection: that.listingsCollection
@@ -77,8 +81,14 @@ Resell.Views.Items = Backbone.View.extend({
 
             that.$("ul").append(itemView.el);
 
+window.arr[i] = itemView;
             itemView.on('change', function() {
                 that.refreshGrid();
+            });
+
+            that.on('ItemViews:remove', function() {
+                itemView.trigger('ItemsCardViews:remove');
+                // itemView.remove();
             });
 
             that.on('Items:modifyAll', function() {

@@ -10,11 +10,11 @@ Resell.Views.Item = Backbone.View.extend({
         this.listingsCollection = options.listingsCollection;
 
         this.itemFrontView = new Resell.Views.ItemFront({
-            model: this.model
+            model: that.model
         });
         this.$el.append(this.itemFrontView.el);
 
-        that.itemBackView = new Resell.Views.ItemBack({
+        this.itemBackView = new Resell.Views.ItemBack({
             model: that.model,
             listingsCollection: that.listingsCollection
         });
@@ -36,6 +36,14 @@ Resell.Views.Item = Backbone.View.extend({
             that.itemFrontView.render();
             that.$el.removeClass('flip');
             that.trigger('change');
+        });
+
+        this.on('ItemsCardViews:remove', function() {
+            console.log("ItemsCardViews:remove ...");
+            console.log("BACK ----------> ", that.itemBackView);
+            console.log("FRONT ----------> ", that.itemFrontView);
+            this.itemBackView.remove();
+            this.itemFrontView.remove();
         });
     },
 
