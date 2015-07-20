@@ -19,5 +19,16 @@ Resell.Views.ItemFront = Backbone.View.extend({
 
     modifyItem: function() {
         this.trigger('Item:modify');
+    },
+
+    dispose: function() {
+        // same as this.$el.remove();
+        this.remove();
+        // unbind events that are
+        // set on this view
+        this.off();
+        // remove all models bindings
+        // made by this view
+        this.model.off( null, null, this );
     }
 });
