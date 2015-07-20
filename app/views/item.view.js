@@ -39,9 +39,6 @@ Resell.Views.Item = Backbone.View.extend({
         });
 
         this.on('ItemsCardViews:remove', function() {
-            console.log("ItemsCardViews:remove ...");
-            console.log("BACK ----------> ", that.itemBackView);
-            console.log("FRONT ----------> ", that.itemFrontView);
             this.itemBackView.remove();
             this.itemFrontView.remove();
         });

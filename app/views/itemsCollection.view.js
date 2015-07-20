@@ -70,7 +70,6 @@ Resell.Views.Items = Backbone.View.extend({
     },
 
     iterateCollection: function() {
-        console.log("ITERA");
         var that = this;
 
         _.each(this.collection.models, function(model, i){
@@ -88,7 +87,7 @@ window.arr[i] = itemView;
 
             that.on('ItemViews:remove', function() {
                 itemView.trigger('ItemsCardViews:remove');
-                // itemView.remove();
+                itemView.remove();
             });
 
             that.on('Items:modifyAll', function() {
