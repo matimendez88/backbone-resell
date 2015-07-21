@@ -1,11 +1,4 @@
-// var Resell = {
-//     Models: {},
-//     Collections: {},
-//     Views: {},
-//     Cache: {}
-// };
-
-'use strict';
+// 'use strict';
 
 (function (win) {
 
@@ -32,4 +25,5 @@
         // This fire "start" application event
         SYI.start();
     });
+    
 }(window));

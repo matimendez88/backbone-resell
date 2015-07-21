@@ -1,24 +1,45 @@
-'use strict';
+// 'use strict';
 
-SYI.module('Resell', function(Resell, SYI, Backbone, Marionette, $, _) {
-	var controller,
-		Router;
+SYI.module('Resell', function (Resell, SYI, Backbone, Marionette, $, _) {
+    var controller,
+        Router;
 
-		Router = Marionette.AppRouter.extend({
-			'appRoutes': {
-				'': 'index'
-			}
-		});
+    Router = Marionette.AppRouter.extend({
+        'appRoutes': {
+            '': 'index'
+        }
+    });
 
-		controller = {
-			index: function() {
-				console.log("Hello World");
-			}
-		};
+    controller = {
+        index: function() {
+            var itemsCollection,
+                listingsCollection,
+                mainLayoutView;
 
-		SYI.onStart = function() {
-			new Router({
-				controller: controller
-			});
-		};
+            listingsCollection = new Resell.Collections.Listings();
+            listingsCollection.fetch({
+                'success': function(collection, response, options) {
+                    collection.trigger('fetched');
+                }
+            });
+
+            itemsCollection = new Resell.Collections.Items();				
+            itemsCollection.fetch({
+                'success': function(collection, response, options){
+                    // collection.trigger('fetched');
+                    mainLayoutView = new Resell.Views.Main({
+                        collection: collection,
+                        listingsCollection: listingsCollection
+                    });
+                    SYI.mainRegion.show(mainLayoutView);
+                }
+            });
+        }
+    };
+
+    SYI.onStart = function() {
+        new Router({
+            controller: controller
+        });
+    };
 });
