@@ -1,0 +1,10 @@
+CACHE MANIFEST
+#v3
+//mercadolibre.github.io/navigation-boilerplate/dist/mercadolibre/mercadolibre.png
+//mercadolibre.github.io/navigation-boilerplate/dist/mercadolibre/mercadolibre@2x.png
+//static.mlstatic.com/org-img/ch/ui/1.1.1/chico.min.css
+/build/styles/bundle.css
+/build/scripts/bundle.js
+
+NETWORK:
+*
