@@ -26,7 +26,6 @@ SYI.module('Resell', function (Resell, SYI, Backbone, Marionette, $, _) {
             itemsCollection = new Resell.Collections.Items();				
             itemsCollection.fetch({
                 'success': function(collection, response, options){
-                    // collection.trigger('fetched');
                     mainLayoutView = new Resell.Views.Main({
                         collection: collection,
                         listingsCollection: listingsCollection
