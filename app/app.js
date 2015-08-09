@@ -8,6 +8,8 @@
     // Create app
     var SYI = new Backbone.Marionette.Application();
 
+    SYI.Events = _.extend({}, Backbone.Events);
+
     SYI.addRegions({
         'mainRegion': '#app'
     });
