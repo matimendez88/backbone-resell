@@ -26,10 +26,6 @@ SYI.module('Resell.Views', function (Views, SYI, Backbone, Marionette, $, _) {
 
             actionsView = new Views.Actions();
             this.actionsRegion.show(actionsView);
-
-            actionsView.on('Action:modifyAll', function() {
-                console.log("actionsView");
-            });
         }
 
     });

@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 SYI.module('Resell.Models', function(Models, SYI, Backbone, Marionette, $, _) {
     

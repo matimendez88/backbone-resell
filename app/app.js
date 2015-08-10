@@ -22,7 +22,7 @@
     // Export Application
     win.SYI = SYI;
 
-    // Start the MorfifyApp app
+    // Start the Resell app
     $(function() {
         // This fire "start" application event
         SYI.start();

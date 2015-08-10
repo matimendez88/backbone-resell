@@ -8,6 +8,14 @@ SYI.module('Resell.Views', function (Views, SYI, Backbone, Marionette, $, _) {
 
         childView: Views.Item,
 
+        initialize: function() {
+            var that = this;
+
+            SYI.Events.on('Collection:filtered', function(filteredCollection) {
+                that.collection.reset(filteredCollection);
+            });
+        },
+
         buildChildView: function(child, ChildViewClass, childViewOptions){
             var that = this;
 

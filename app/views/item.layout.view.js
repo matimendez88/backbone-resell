@@ -47,11 +47,17 @@ SYI.module('Resell.Views', function (Views, SYI, Backbone, Marionette, $, _) {
                 that.trigger('Items:save');
             });
 
+            SYI.Events.on('Action:modifyAll', function() {
+                itemFrontView.modifyItem();
+            });
+
+            SYI.Events.on('Action:resellAll', function() {
+                itemBackView.saveItem();
+            });
         },
 
         flipCard: function() {
             this.$el.addClass('flip');
-            // this.trigger('change');
         }
 
     });
