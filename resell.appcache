@@ -6,6 +6,8 @@ CACHE MANIFEST
 //static.mlstatic.com/org-img/ch/ui/1.1.1/chico.min.css
 /backbone-resell/build/styles/bundle.css
 /backbone-resell/build/scripts/bundle.js
+/backbone-resell/mocks/responses/items-get.json
+/backbone-resell/mocks/responses/listings-get.json
 
 
 NETWORK:
