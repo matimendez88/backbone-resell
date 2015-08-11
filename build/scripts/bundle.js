@@ -31185,82 +31185,38 @@ return Outlayer;
  * http://opensource.org/licenses/MIT OR http://www.gnu.org/licenses/gpl-2.0.html
  */
 !function(a,b){"use strict";if("function"==typeof define&&define.amd&&define.amd.jQuery)define(["jquery"],function(c){return b(c,a)});else{if("object"!=typeof exports)return b(a.jQuery||a.$,a);module.exports=b}}(this,function(a,b){"use strict";function c(c){void 0===b.DOMParser&&b.ActiveXObject&&(b.DOMParser=function(){},DOMParser.prototype.parseFromString=function(a){var b=new ActiveXObject("Microsoft.XMLDOM");return b.async="false",b.loadXML(a),b});try{var d=(new DOMParser).parseFromString(c,"text/xml");if(!a.isXMLDoc(d))throw new Error("Unable to parse XML");var e=a("parsererror",d);if(1===e.length)throw new Error("Error: "+a(d).text());return d}catch(f){var g=void 0===f.name?f:f.name+": "+f.message;return void a(document).trigger("xmlParseError",[g])}}function d(b,c){var e=!0;return"string"==typeof c?a.isFunction(b.test)?b.test(c):b===c:(a.each(b,function(f){return void 0===c[f]?e=!1:void("object"==typeof c[f]&&null!==c[f]?(e&&a.isArray(c[f])&&(e=a.isArray(b[f])&&c[f].length===b[f].length),e=e&&d(b[f],c[f])):e=b[f]&&a.isFunction(b[f].test)?e&&b[f].test(c[f]):e&&b[f]===c[f])}),e)}function e(b,c){return b[c]===a.mockjaxSettings[c]}function f(b,c){if(a.isFunction(b))return b(c);if(a.isFunction(b.url.test)){if(!b.url.test(c.url))return null}else{var e=b.url.indexOf("*");if(b.url!==c.url&&-1===e||!new RegExp(b.url.replace(/[-[\]{}()+?.,\\^$|#\s]/g,"\\$&").replace(/\*/g,".+")).test(c.url))return null}if(b.requestHeaders){if(void 0===c.headers)return null;var f=!1;if(a.each(b.requestHeaders,function(a,b){var d=c.headers[a];return d!==b?(f=!0,!1):void 0}),f)return null}return!b.data||c.data&&d(b.data,c.data)?b&&b.type&&b.type.toLowerCase()!==c.type.toLowerCase()?null:b:null}function g(a){return"number"==typeof a&&a>=0}function h(b){if(a.isArray(b)&&2===b.length){var c=b[0],d=b[1];if(g(c)&&g(d))return Math.floor(Math.random()*(d-c))+c}else if(g(b))return b;return z}function i(b,d,f){var g=function(e){return function(){return function(){this.status=b.status,this.statusText=b.statusText,this.readyState=1;var g=function(){this.readyState=4;var e;"json"===d.dataType&&"object"==typeof b.responseText?this.responseText=JSON.stringify(b.responseText):"xml"===d.dataType?"string"==typeof b.responseXML?(this.responseXML=c(b.responseXML),this.responseText=b.responseXML):this.responseXML=b.responseXML:"object"==typeof b.responseText&&null!==b.responseText?(b.contentType="application/json",this.responseText=JSON.stringify(b.responseText)):this.responseText=b.responseText,("number"==typeof b.status||"string"==typeof b.status)&&(this.status=b.status),"string"==typeof b.statusText&&(this.statusText=b.statusText),e=this.onreadystatechange||this.onload,a.isFunction(e)?(b.isTimeout&&(this.status=-1),e.call(this,b.isTimeout?"timeout":void 0)):b.isTimeout&&(this.status=-1)};if(a.isFunction(b.response)){if(2===b.response.length)return void b.response(f,function(){g.call(e)});b.response(f)}g.call(e)}.apply(e)}}(this);b.proxy?t({global:!1,url:b.proxy,type:b.proxyType,data:b.data,dataType:"script"===d.dataType?"text/plain":d.dataType,complete:function(a){b.responseXML=a.responseXML,b.responseText=a.responseText,e(b,"status")&&(b.status=a.status),e(b,"statusText")&&(b.statusText=a.statusText),this.responseTimer=setTimeout(g,h(b.responseTime))}}):d.async===!1?g():this.responseTimer=setTimeout(g,h(b.responseTime))}function j(b,c,d,e){return b=a.extend(!0,{},a.mockjaxSettings,b),"undefined"==typeof b.headers&&(b.headers={}),"undefined"==typeof c.headers&&(c.headers={}),b.contentType&&(b.headers["content-type"]=b.contentType),{status:b.status,statusText:b.statusText,readyState:1,open:function(){},send:function(){e.fired=!0,i.call(this,b,c,d)},abort:function(){clearTimeout(this.responseTimer)},setRequestHeader:function(a,b){c.headers[a]=b},getResponseHeader:function(a){return b.headers&&b.headers[a]?b.headers[a]:"last-modified"===a.toLowerCase()?b.lastModified||(new Date).toString():"etag"===a.toLowerCase()?b.etag||"":"content-type"===a.toLowerCase()?b.contentType||"text/plain":void 0},getAllResponseHeaders:function(){var c="";return b.contentType&&(b.headers["Content-Type"]=b.contentType),a.each(b.headers,function(a,b){c+=a+": "+b+"\n"}),c}}}function k(a,b,c){if(l(a),a.dataType="json",a.data&&x.test(a.data)||x.test(a.url)){o(a,b,c);var d=/^(\w+:)?\/\/([^\/?#]+)/,e=d.exec(a.url),f=e&&(e[1]&&e[1]!==location.protocol||e[2]!==location.host);if(a.dataType="script","GET"===a.type.toUpperCase()&&f){var g=m(a,b,c);return g?g:!0}}return null}function l(a){"GET"===a.type.toUpperCase()?x.test(a.url)||(a.url+=(/\?/.test(a.url)?"&":"?")+(a.jsonp||"callback")+"=?"):a.data&&x.test(a.data)||(a.data=(a.data?a.data+"&":"")+(a.jsonp||"callback")+"=?")}function m(b,c,d){var e=d&&d.context||b,f=a.Deferred?new a.Deferred:null;if(c.response&&a.isFunction(c.response))c.response(d);else if("object"==typeof c.responseText)a.globalEval("("+JSON.stringify(c.responseText)+")");else{if(c.proxy)return t({global:!1,url:c.proxy,type:c.proxyType,data:c.data,dataType:"script"===b.dataType?"text/plain":b.dataType,complete:function(d){a.globalEval("("+d.responseText+")"),n(b,c,e,f)}}),f;a.globalEval("("+c.responseText+")")}return n(b,c,e,f),f}function n(b,c,d,e){var f;if(setTimeout(function(){p(b,d,c),q(b,d)},h(c.responseTime)),e){try{f=a.parseJSON(c.responseText)}catch(g){}e.resolveWith(d,[f||c.responseText])}}function o(a,c,d){var e=d&&d.context||a,f=a.jsonpCallback||"jsonp"+y++;a.data&&(a.data=(a.data+"").replace(x,"="+f+"$1")),a.url=a.url.replace(x,"="+f+"$1"),b[f]=b[f]||function(){p(a,e,c),q(a,e),b[f]=void 0;try{delete b[f]}catch(d){}}}function p(b,c,d){b.success&&b.success.call(c,d.responseText||"","success",{}),b.global&&(b.context?a(b.context):a.event).trigger("ajaxSuccess",[{},b])}function q(b,c){b.complete&&b.complete.call(c,{statusText:"success",status:200},"success"),b.global&&(b.context?a(b.context):a.event).trigger("ajaxComplete",[{},b]),b.global&&!--a.active&&a.event.trigger("ajaxStop")}function r(b,c){var d,e,g,h;"object"==typeof b?(c=b,b=void 0):(c=c||{},c.url=b),e=a.ajaxSetup({},c),e.type=e.method=e.method||e.type,h=function(b,d){var e=c[b.toLowerCase()];return function(){a.isFunction(e)&&e.apply(this,[].slice.call(arguments)),d["onAfter"+b]()}};for(var i=0;i<u.length;i++)if(u[i]&&(g=f(u[i],e)))return v.push(e),a.mockjaxSettings.log(g,e),e.dataType&&"JSONP"===e.dataType.toUpperCase()&&(d=k(e,g,c))?d:(g.cache=e.cache,g.timeout=e.timeout,g.global=e.global,g.isTimeout&&(g.responseTime>1?c.timeout=g.responseTime-1:(g.responseTime=2,c.timeout=1)),a.isFunction(g.onAfterSuccess)&&(c.success=h("Success",g)),a.isFunction(g.onAfterError)&&(c.error=h("Error",g)),a.isFunction(g.onAfterComplete)&&(c.complete=h("Complete",g)),s(g,c),function(b,c,e,f){d=t.call(a,a.extend(!0,{},e,{xhr:function(){return j(b,c,e,f)}}))}(g,e,c,u[i]),d);if(w.push(c),a.mockjaxSettings.throwUnmocked===!0)throw new Error("AJAX not mocked: "+c.url);return t.apply(a,[c])}function s(a,b){if(a.url instanceof RegExp&&a.hasOwnProperty("urlParams")){var c=a.url.exec(b.url);if(1!==c.length){c.shift();var d=0,e=c.length,f=a.urlParams.length,g=Math.min(e,f),h={};for(d;g>d;d++){var i=a.urlParams[d];h[i]=c[d]}b.urlParams=h}}}var t=a.ajax,u=[],v=[],w=[],x=/=\?(&|$)/,y=(new Date).getTime();a.extend({ajax:r});var z=500;return a.mockjaxSettings={log:function(c,d){if(c.logging!==!1&&("undefined"!=typeof c.logging||a.mockjaxSettings.logging!==!1)&&b.console&&console.log){var e="MOCK "+d.type.toUpperCase()+": "+d.url,f=a.ajaxSetup({},d);if("function"==typeof console.log)console.log(e,f);else try{console.log(e+" "+JSON.stringify(f))}catch(g){console.log(e)}}},logging:!0,status:200,statusText:"OK",responseTime:z,isTimeout:!1,throwUnmocked:!1,contentType:"text/plain",response:"",responseText:"",responseXML:"",proxy:"",proxyType:"GET",lastModified:null,etag:"",headers:{etag:"IJF@H#@923uf8023hFO@I#H#","content-type":"text/plain"}},a.mockjax=function(a){var b=u.length;return u[b]=a,b},a.mockjax.clear=function(a){a||0===a?u[a]=null:u=[],v=[],w=[]},a.mockjax.handler=function(a){return 1===arguments.length?u[a]:void 0},a.mockjax.mockedAjaxCalls=function(){return v},a.mockjax.unfiredHandlers=function(){for(var a=[],b=0,c=u.length;c>b;b++){var d=u[b];null===d||d.fired||a.push(d)}return a},a.mockjax.unmockedAjaxCalls=function(){return w},a.mockjax});
-var Resell = {
-    Models: {},
-    Collections: {},
-    Views: {},
-    Cache: {}
-};
-this["__templates"] = this["__templates"] || {};
-this["__templates"]["actions"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    return "<div class=\"actions-container\">\n    <input type=\"submit\" name=\"\" value=\"Modificar todos\" class=\"ch-btn ch-btn-skin\" data-js=\"modifyAll\">\n    <input type=\"submit\" name=\"\" value=\"Republicar todos\" class=\"ch-btn ch-btn-skin\" data-js=\"resellAll\">\n    <div class=\"filters\">\n    	<p>Filtrar por tipo de listing: </p>\n    	<select>\n    		<option value=\"all\">Todos</option>\n			<option value=\"free\">Gratuita</option>\n			<option value=\"bronze\">Bronce</option>\n			<option value=\"silver\">Plata</option>\n			<option value=\"gold\">Oro</option>\n			<option value=\"goldPro\">Oro Premium</option>\n		</select>\n    </div>\n</div>\n<ul class=\"grid\"></ul>";
-},"useData":true});
-this["__templates"]["itemBack"] = Handlebars.template({"1":function(depth0,helpers,partials,data,blockParams,depths) {
-    var stack1, helper, alias1=helpers.helperMissing, alias2=this.lambda, alias3=this.escapeExpression, alias4="function";
+// 'use strict';
 
-  return "                <li class=\"listing-type "
-    + ((stack1 = (helpers.compare || (depth0 && depth0.compare) || alias1).call(depth0,(depth0 != null ? depth0.listingId : depth0),((stack1 = (depths[1] != null ? depths[1].model : depths[1])) != null ? stack1.listingId : stack1),{"name":"compare","hash":{"operator":"==="},"fn":this.program(2, data, 0, blockParams, depths),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + "\">\n                    <input name=\"listing-"
-    + alias3(alias2(((stack1 = (depths[1] != null ? depths[1].model : depths[1])) != null ? stack1.id : stack1), depth0))
-    + "\" id=\""
-    + alias3(((helper = (helper = helpers.listingId || (depth0 != null ? depth0.listingId : depth0)) != null ? helper : alias1),(typeof helper === alias4 ? helper.call(depth0,{"name":"listingId","hash":{},"data":data}) : helper)))
-    + "-"
-    + alias3(alias2(((stack1 = (depths[1] != null ? depths[1].model : depths[1])) != null ? stack1.id : stack1), depth0))
-    + "\" type=\"radio\" "
-    + ((stack1 = (helpers.compare || (depth0 && depth0.compare) || alias1).call(depth0,(depth0 != null ? depth0.listingId : depth0),((stack1 = (depths[1] != null ? depths[1].model : depths[1])) != null ? stack1.listingId : stack1),{"name":"compare","hash":{"operator":"==="},"fn":this.program(4, data, 0, blockParams, depths),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + " value=\""
-    + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias4 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
-    + "\">\n                    <label for=\""
-    + alias3(((helper = (helper = helpers.listingId || (depth0 != null ? depth0.listingId : depth0)) != null ? helper : alias1),(typeof helper === alias4 ? helper.call(depth0,{"name":"listingId","hash":{},"data":data}) : helper)))
-    + "-"
-    + alias3(alias2(((stack1 = (depths[1] != null ? depths[1].model : depths[1])) != null ? stack1.id : stack1), depth0))
-    + "\">\n                        <span>"
-    + alias3(((helper = (helper = helpers.name || (depth0 != null ? depth0.name : depth0)) != null ? helper : alias1),(typeof helper === alias4 ? helper.call(depth0,{"name":"name","hash":{},"data":data}) : helper)))
-    + "</span>\n                    </label>\n                    <label for=\""
-    + alias3(((helper = (helper = helpers.listingId || (depth0 != null ? depth0.listingId : depth0)) != null ? helper : alias1),(typeof helper === alias4 ? helper.call(depth0,{"name":"listingId","hash":{},"data":data}) : helper)))
-    + "-"
-    + alias3(alias2(((stack1 = (depths[1] != null ? depths[1].model : depths[1])) != null ? stack1.id : stack1), depth0))
-    + "\">\n                        <strong>"
-    + alias3((helpers.math || (depth0 && depth0.math) || alias1).call(depth0,(depth0 != null ? depth0.id : depth0),"*",3,{"name":"math","hash":{},"data":data}))
-    + " veces</strong> más visitas\n                    </label>\n                </li>\n";
-},"2":function(depth0,helpers,partials,data) {
-    return "listing-selected";
-},"4":function(depth0,helpers,partials,data) {
-    return "checked";
-},"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data,blockParams,depths) {
-    var stack1, alias1=this.lambda, alias2=this.escapeExpression;
+(function (win) {
 
-  return "<a href=\"#\" class=\"item-image-container\">\n    <img src=\""
-    + alias2(alias1(((stack1 = (depth0 != null ? depth0.model : depth0)) != null ? stack1.picture : stack1), depth0))
-    + "\" alt=\"\" width=\"100\" height=\"100\" />\n</a>\n<div class=\"item-details\">\n    <div class=\"item-title-container\">\n        <input type=\"text\" value=\""
-    + alias2(alias1(((stack1 = (depth0 != null ? depth0.model : depth0)) != null ? stack1.title : stack1), depth0))
-    + "\" maxlength=\"60\" size=\"30\" />\n    </div>\n    <div class=\"item-price-container\">\n        <label for=\"price\">Precio: $</label>\n        <input type=\"text\" value=\""
-    + alias2(alias1(((stack1 = (depth0 != null ? depth0.model : depth0)) != null ? stack1.price : stack1), depth0))
-    + "\" id=\"price\" maxlength=\"10\" />\n    </div>\n    <div class=\"item-quantity-container\">\n        <label for=\"quantity\">Cantidad: </label>\n        <input type=\"text\" value=\""
-    + alias2(alias1(((stack1 = (depth0 != null ? depth0.model : depth0)) != null ? stack1.quantity : stack1), depth0))
-    + "\" id=\"quantity\" maxlength=\"4\" size=\"4\" />\n    </div>\n    <div class=\"item-dragged-container\">\n        <label>Acumula: </label>\n        <div class=\"item-dragged-pill\">\n            <span>\n                Visitas\n                <i class=\"syi-icon-user\"></i>\n                <strong class=\"dragged-visits\">"
-    + alias2(alias1(((stack1 = (depth0 != null ? depth0.model : depth0)) != null ? stack1.visits : stack1), depth0))
-    + "</strong>\n            </span>\n            <span>\n                Ventas\n                <i class=\"syi-icon-basket\"></i>\n                <strong class=\"dragged-sales\">"
-    + alias2(alias1(((stack1 = (depth0 != null ? depth0.model : depth0)) != null ? stack1.sells : stack1), depth0))
-    + "</strong>\n            </span>\n        </div>\n    </div>\n    <div class=\"item-listing-container\">\n        <h3>Visitas estimadas para esta categoría *</h3>\n        <ul>\n"
-    + ((stack1 = helpers.each.call(depth0,(depth0 != null ? depth0.listings : depth0),{"name":"each","hash":{},"fn":this.program(1, data, 0, blockParams, depths),"inverse":this.noop,"data":data})) != null ? stack1 : "")
-    + "        </ul>\n    </div>\n    <div class=\"item-ammounts-container\">\n        <div class=\"price-resell-container media-object-fit\">\n            <h4>Costo por republicar</h4>\n            <div class=\"price-resell\">\n                <span class=\"ch-price\">$ 0<sup>00</sup></span>\n            </div>\n        </div>\n        <div class=\"price-per-sell-container media-object-fit-right\">\n            <h4 class=\"\">Costo por cada venta</h4>\n            <div class=\"price-per-sell\" data-js=\"\">\n                <span class=\"ch-price\">$ 88<sup>00</sup></span>\n            </div>\n        </div>\n    </div>\n</div>\n<div class=\"item-action-container\">\n    <input type=\"submit\" name=\"\" value=\"Republicar\" class=\"ch-btn ch-btn-large\" data-js=\"resellBtn\">\n</div>";
-},"useData":true,"useDepths":true});
-this["__templates"]["itemFront"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
-    var helper, alias1=helpers.helperMissing, alias2="function", alias3=this.escapeExpression;
+    // Check if app its launched
+    if (win.SYI) { return; }
 
-  return "<a href=\"#\" class=\"item-image-container\">\n    <img src=\""
-    + alias3(((helper = (helper = helpers.picture || (depth0 != null ? depth0.picture : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"picture","hash":{},"data":data}) : helper)))
-    + "\" alt=\"Item image\" width=\"300\" height=\"300\" />\n</a>\n<div class=\"item-details\">\n    <div class=\"item-title-container\">\n        <a href=\"#\">"
-    + alias3(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"title","hash":{},"data":data}) : helper)))
-    + "</a>\n    </div>\n    <div class=\"item-price-container\">\n        <p>Precio: $"
-    + alias3(((helper = (helper = helpers.price || (depth0 != null ? depth0.price : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"price","hash":{},"data":data}) : helper)))
-    + "</p>\n    </div>\n    <div class=\"item-quantity-container\">\n        <p>Cantidad: "
-    + alias3(((helper = (helper = helpers.quantity || (depth0 != null ? depth0.quantity : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"quantity","hash":{},"data":data}) : helper)))
-    + "</p>\n    </div>\n    <div class=\"item-listing-container\">\n        <p>Publicación "
-    + alias3(((helper = (helper = helpers.listingType || (depth0 != null ? depth0.listingType : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"listingType","hash":{},"data":data}) : helper)))
-    + "</p>\n    </div>\n</div>\n<div class=\"item-action-container\">\n    <input type=\"submit\" name=\"\" value=\"Modificar\" class=\"ch-btn ch-btn-large\" data-js=\"modifyBtn\">\n</div>";
-},"useData":true});
+    // Create app
+    var SYI = new Backbone.Marionette.Application();
+
+    SYI.Events = _.extend({}, Backbone.Events);
+
+    SYI.addRegions({
+        'mainRegion': '#app'
+    });
+
+    // Subscribe to "start" application event
+    SYI.on('start', function() {
+        Backbone.history.start();
+    });
+
+    // Export Application
+    win.SYI = SYI;
+
+    // Start the Resell app
+    $(function() {
+        // This fire "start" application event
+        SYI.start();
+    });
+    
+}(window));
+
 Handlebars.registerHelper('compare', function(lvalue, rvalue, options) {
     if (arguments.length < 3)
         throw new Error("Handlerbars Helper 'compare' needs 2 parameters");
@@ -31303,290 +31259,620 @@ Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
     }[operator];
 });
 
-Resell.Models.Item = Backbone.Model.extend({
-    urlRoot: '/items',
-    defaults: {
-        'id': null,
-        'title': null,
-        'price': null,
-        'picture': null,
-        'quantity': null,
-        'visits': null,
-        'sells': null,
-        'listingId': null,
-        'listingType': null
-    }
-});
-Resell.Models.Listing = Backbone.Model.extend({
-    urlRoot: '/listings',
-    defaults: {
-        'id': null,
-        'listingId': null,
-        'name': null,
-        'resellCost': null,
-        'sellCost': null
-    }
-});
-Resell.Collections.Items = Backbone.Collection.extend({
-	url: '/items',
-	model: Resell.Models.Item
-});
-Resell.Collections.Listings = Backbone.Collection.extend({
-	url: '/listings',
-	model: Resell.Models.Listing
-});
-Resell.Views.Item = Backbone.View.extend({
-    tagName: 'li',
-    className: 'item-container grid-item',
+// 'use strict';
 
-    initialize: function(options) {
-        var that = this;
-
-        this.itemFrontView = {};
-        this.itemBackView = {};
-        this.listingsCollection = options.listingsCollection;
-
-        this.itemFrontView = new Resell.Views.ItemFront({
-            model: this.model
-        });
-        this.$el.append(this.itemFrontView.el);
-
-        that.itemBackView = new Resell.Views.ItemBack({
-            model: that.model,
-            listingsCollection: that.listingsCollection
-        });
-        this.$el.append(this.itemBackView.el);
-
-        this.on('Item:modifyAll', function() {
-            this.flipCard();
-        });
-
-        this.itemFrontView.on('Item:modify', function(data) {
-            that.flipCard();
-        });
-
-        this.on('Item:resellAll', function() {
-            this.itemBackView.saveItem();
-        });
-
-        this.itemBackView.on('Item:save', function(data) {
-            that.itemFrontView.render();
-            that.$el.removeClass('flip');
-            that.trigger('change');
-        });
-    },
-
-    render: function() {
-        this.$el.html(this.template());
-        return this;
-    },
-
-    flipCard: function() {
-        this.$el.addClass('flip');
-        this.trigger('change');
-    }
-});
-Resell.Views.ItemBack = Backbone.View.extend({
-    tagName: 'div',
-    className: 'item-container-back',
-
-    events: {
-        'click [data-js="resellBtn"]': 'saveItem'
-    },
-
-    template: __templates.itemBack,
-
-    initialize: function(options) {
-        var that = this;
-
-        this.listingsCollection = options.listingsCollection;
-
-        this.listingsCollection.on('fetched', function() {
-            that.render();
-        });
-    },
-
-    render: function() {
-        var data = {
-            listings: this.listingsCollection.toJSON(),
-            model: this.model.toJSON()
-        };
-
-        this.$el.html(this.template(data));
-        return this;
-    },
-
-    saveItem: function() {
-        var listingIdAttr = this.$('input:checked').attr('id'),
-            listingId = listingIdAttr.split("-")[0],
-            listingType = this.$('input:checked').attr('value');
-
-        this.model.set({
-            title: this.$('.item-title-container input').val(),
-            price: this.$('.item-price-container input').val(),
-            quantity: this.$('.item-quantity-container input').val(),
-            listingId: listingId,
-            listingType: listingType
-        });
-        this.model.save();
-        this.trigger('Item:save');
-    }
-});
-Resell.Views.ItemFront = Backbone.View.extend({
-    tagName: 'div',
-    className: 'item-container-front',
-
-    events: {
-        'click [data-js="modifyBtn"]': 'modifyItem'
-    },
-
-    template: __templates.itemFront,
+SYI.module('Resell.Models', function(Models, SYI, Backbone, Marionette, $, _) {
     
-    initialize: function() {
-        this.render();
-    },
+    Models.Item = Backbone.Model.extend({
+        urlRoot: '/items',
+        defaults: {
+            'id': null,
+            'title': null,
+            'price': null,
+            'picture': null,
+            'quantity': null,
+            'visits': null,
+            'sells': null,
+            'listingId': null,
+            'listingType': null
+        }
+    });
 
-    render: function() {
-        this.$el.html(this.template(this.model.toJSON()));
-        return this;
-    },
-
-    modifyItem: function() {
-        this.trigger('Item:modify');
-    }
 });
-Resell.Views.Items = Backbone.View.extend({
+'use strict';
 
-    template: __templates.actions,
+SYI.module('Resell.Models', function(Models, SYI, Backbone, Marionette, $, _) {
 
-    events: {
-        'click [data-js="modifyAll"]': 'modifyAll',
-        'click [data-js="resellAll"]': 'resellAll',
-        'change select': 'listingFilter'
-    },
+	Models.Listing = Backbone.Model.extend({
+	    urlRoot: '/listings',
+	    defaults: {
+	        'id': null,
+	        'listingId': null,
+	        'name': null,
+	        'resellCost': null,
+	        'sellCost': null
+	    }
+	});
 
-    initialize: function(options){
-        var that = this;
+});
+// 'use strict';
 
-        Resell.Cache.ItemsCollection = this.collection;
+SYI.module('Resell.Collections', function(Collections, SYI, Backbone, Marionette, $, _) {
 
-        this.listingsCollection = options.listingsCollection;
-        
-        this.collection.on('fetched', function() {
-            that.render();
-        });
-    },
+    Collections.Items = Backbone.Collection.extend({
+        url: '/items',
+        model: SYI.Resell.Models.Item
+    });
 
-    render: function(){
-        var that = this;
+});
+// 'use strict';
 
-        this.$el.append(this.template());
+SYI.module('Resell.Collections', function (Collections, SYI, Backbone, Marionette, $, _) {
 
-        this.iterateCollection();
-    },
+    Collections.Listings = Backbone.Collection.extend({
+        url: '/listings',
+        model: SYI.Resell.Models.Listing
+    });
 
-    refreshGrid: function() {
-        var that = this;
+});
+// 'use strict';
 
-        this.$el.masonry({
-            itemSelector: '.grid-item'
-        });
+SYI.module('Resell.Views', function (Views, SYI, Backbone, Marionette, $, _) {    
+    
+    Views.Actions = Marionette.ItemView.extend({
 
-        this.$el.masonry('reloadItems');   
-        this.$el.masonry('layout');
-    },
+        onShow: function() {},
 
-    modifyAll: function() {
-        this.trigger('Items:modifyAll');
-        $('[data-js="modifyAll"]').addClass('ch-btn-disabled');
-        $('[data-js="resellAll"]').removeClass('ch-btn-disabled');
+        template: __templates.resell.actions,
 
-    },
+        ui: {
+            btnModifyAll: '[data-js="modifyAll"]',
+            btnResellAll: '[data-js="resellAll"]',
+            selectListing: 'select'
+        },
 
-    resellAll: function() {
-        this.trigger('Items:resellAll');
-        $('[data-js="modifyAll"]').removeClass('ch-btn-disabled');
-        $('[data-js="resellAll"]').addClass('ch-btn-disabled');
-    },
+        events: {
+            'click @ui.btnModifyAll': 'modifyAll',
+            'click @ui.btnResellAll': 'resellAll',
+            'change @ui.selectListing': 'listingFilter'
+        },
 
-    listingFilter: function(event) {
-        var that = this,
-            listingId = event.target.value,
-            filteredListings = this.collection.filter(function(model) {
-                return event.target.value === 'all' ? Resell.Cache.ItemsCollection : model.get("listingId") === listingId;
+        modifyAll: function() {
+            SYI.Events.trigger('Action:modifyAll');
+            $(this.ui.btnModifyAll).addClass('ch-btn-disabled');
+            $(this.ui.btnResellAll).removeClass('ch-btn-disabled');
+        },
+
+        resellAll: function() {
+            SYI.Events.trigger('Action:resellAll');
+            $(this.ui.btnModifyAll).removeClass('ch-btn-disabled');
+            $(this.ui.btnResellAll).addClass('ch-btn-disabled');
+        },
+
+        listingFilter: function(event) {
+
+            var that = this,
+                listingId = event.target.value,
+                filtered;
+
+            filtered = SYI.Resell.Cache.Collections.Items.filter(function(model) {
+               return event.target.value === 'all' ? SYI.Resell.Cache.Collections.Items : model.get("listingId") === listingId;
             });
 
-        this.$("ul").empty();
+            SYI.Events.trigger('Collection:filtered', filtered);
+        }
 
-        this.iterateCollection(filteredListings);
-        this.listingsCollection.trigger('fetched');
-    },
+    });
+});
+// 'use strict';
 
-    iterateCollection: function(collection) {
-        var that = this,
-            filteredCollection = collection || Resell.Cache.ItemsCollection.models;
+SYI.module('Resell.Views', function (Views, SYI, Backbone, Marionette, $, _) {
 
-        _.each(filteredCollection, function(model, i){
-            var itemView = new Resell.Views.Item({
-                model: model,
-                listingsCollection: that.listingsCollection
+    Views.Item = Marionette.LayoutView.extend({
+
+        tagName: 'li',
+
+        className: 'item-container grid-item',
+
+        template: __templates.resell.item,
+
+        regions: {
+            'cardFrontRegion': '[data-js="card-front"]',
+            'cardBackRegion': '[data-js="card-back"]'
+        },
+
+        events: {},
+
+        onShow: function() {
+            var that = this,
+                listingsCollection = this.options.listingsCollection,
+                itemFrontView,
+                itemBackView;
+
+            itemFrontView = new Views.ItemFront({
+                model: this.model
+            });
+            this.cardFrontRegion.show(itemFrontView);
+
+            itemBackView = new Views.ItemBack({
+                model: this.model,
+                listingsCollection: listingsCollection
+            });
+            this.cardBackRegion.show(itemBackView);
+
+            this.trigger('InnerViews:load');
+
+            itemFrontView.on('Item:modify', function() {
+                that.flipCard();
+                that.trigger('Items:modify');
             });
 
-            that.$("ul").append(itemView.el);
+            itemBackView.on('Item:save', function() {
+                that.flipCard();
+                that.$el.removeClass('flip');
+                that.trigger('Items:save');
+            });
 
-            itemView.on('change', function() {
+            SYI.Events.on('Action:modifyAll', function() {
+                itemFrontView.modifyItem();
+            });
+
+            SYI.Events.on('Action:resellAll', function() {
+                itemBackView.saveItem();
+            });
+        },
+
+        flipCard: function() {
+            this.$el.addClass('flip');
+        }
+
+    });
+
+});
+// Resell.Views.Item = Backbone.View.extend({
+//     tagName: 'li',
+//     className: 'item-container grid-item',
+
+//     initialize: function(options) {
+//         var that = this;
+
+//         this.itemFrontView = {};
+//         this.itemBackView = {};
+//         this.listingsCollection = options.listingsCollection;
+
+//         this.itemFrontView = new Resell.Views.ItemFront({
+//             model: that.model
+//         });
+//         this.$el.append(this.itemFrontView.el);
+
+//         this.itemBackView = new Resell.Views.ItemBack({
+//             model: that.model,
+//             listingsCollection: that.listingsCollection
+//         });
+//         this.$el.append(this.itemBackView.el);
+
+//         this.on('Item:modifyAll', function() {
+//             this.flipCard();
+//         });
+
+//         this.itemFrontView.on('Item:modify', function(data) {
+//             that.flipCard();
+//         });
+
+//         this.on('Item:resellAll', function() {
+//             this.itemBackView.saveItem();
+//         });
+
+//         this.itemBackView.on('Item:save', function(data) {
+//             that.itemFrontView.render();
+//             that.$el.removeClass('flip');
+//             that.trigger('change');
+//         });
+
+//         this.on('ItemsCardViews:remove', function() {
+//             this.itemBackView.remove();
+//             this.itemFrontView.remove();
+//         });
+//     },
+
+//     render: function() {
+//         this.$el.html(this.template());
+//         return this;
+//     },
+
+//     flipCard: function() {
+//         this.$el.addClass('flip');
+//         this.trigger('change');
+//     }
+// });
+// 'use strict';
+
+SYI.module('Resell.Views', function (Views, SYI, Backbone, Marionette, $, _) {    
+    
+    Views.ItemBack = Marionette.ItemView.extend({
+
+        template: __templates.resell.itemBack,
+
+        ui: {
+            button: '[data-js="resellBtn"]'
+        },
+
+        events: {
+            'click @ui.button': 'saveItem'
+        },
+
+        templateHelpers: function(){
+            return {
+                'model': this.model.toJSON(),
+                'listings': this.options.listingsCollection.toJSON()
+            };
+        },
+
+        saveItem: function() {
+            var listingIdAttr = this.$('input:checked').attr('id'),
+                listingId = listingIdAttr.split("-")[0],
+                listingType = this.$('input:checked').attr('value');
+
+            this.model.set({
+                title: this.$('.item-title-container input').val(),
+                price: this.$('.item-price-container input').val(),
+                quantity: this.$('.item-quantity-container input').val(),
+                listingId: listingId,
+                listingType: listingType
+            });
+
+            this.model.save();
+            this.trigger('Item:save');
+        },
+
+        modelEvents: {
+            'change': 'render'
+        }
+
+    });
+});
+// Resell.Views.ItemBack = Backbone.View.extend({
+//     tagName: 'div',
+//     className: 'item-container-back',
+
+//     events: {
+//         'click [data-js="resellBtn"]': 'saveItem'
+//     },
+
+//     template: __templates.itemBack,
+
+//     initialize: function(options) {
+//         var that = this;
+
+//         this.listingsCollection = options.listingsCollection;
+
+//         this.listingsCollection.on('fetched', function() {
+//             that.render();
+//         });
+//     },
+
+//     render: function() {
+//         var data = {
+//             listings: this.listingsCollection.toJSON(),
+//             model: this.model.toJSON()
+//         };
+
+//         this.$el.html(this.template(data));
+//         return this;
+//     },
+
+//     saveItem: function() {
+//         var listingIdAttr = this.$('input:checked').attr('id'),
+//             listingId = listingIdAttr.split("-")[0],
+//             listingType = this.$('input:checked').attr('value');
+
+//         this.model.set({
+//             title: this.$('.item-title-container input').val(),
+//             price: this.$('.item-price-container input').val(),
+//             quantity: this.$('.item-quantity-container input').val(),
+//             listingId: listingId,
+//             listingType: listingType
+//         });
+//         this.model.save();
+//         this.trigger('Item:save');
+//     },
+
+//     dispose: function() {
+//         // same as this.$el.remove();
+//         this.remove();
+//         // unbind events that are
+//         // set on this view
+//         this.off();
+//         // remove all models bindings
+//         // made by this view
+//         this.model.off( null, null, this );
+//     }
+// });
+// 'use strict';
+
+SYI.module('Resell.Views', function (Views, SYI, Backbone, Marionette, $, _) {    
+    
+    Views.ItemFront = Marionette.ItemView.extend({
+
+        template: __templates.resell.itemFront,
+
+        ui: {
+            button: '[data-js="modifyBtn"]'
+        },
+
+        events: {
+            'click @ui.button': 'modifyItem'
+        },
+
+        modifyItem: function() {
+            this.trigger('Item:modify');
+        },
+
+        modelEvents: {
+            'change': 'render'
+        }
+
+    });
+});
+// Resell.Views.ItemFront = Backbone.View.extend({
+//     tagName: 'div',
+//     className: 'item-container-front',
+
+//     events: {
+//         'click [data-js="modifyBtn"]': 'modifyItem'
+//     },
+
+//     template: __templates.itemFront,
+    
+//     initialize: function() {
+//         this.render();
+//     },
+
+//     render: function() {
+//         this.$el.html(this.template(this.model.toJSON()));
+//         return this;
+//     },
+
+//     modifyItem: function() {
+//         this.trigger('Item:modify');
+//     },
+
+//     dispose: function() {
+//         // same as this.$el.remove();
+//         this.remove();
+//         // unbind events that are
+//         // set on this view
+//         this.off();
+//         // remove all models bindings
+//         // made by this view
+//         this.model.off( null, null, this );
+//     }
+// });
+// 'use strict';
+
+SYI.module('Resell.Views', function (Views, SYI, Backbone, Marionette, $, _) {
+
+    Views.Items = Marionette.CollectionView.extend({
+
+        tagName: 'ul',
+
+        childView: Views.Item,
+
+        initialize: function() {
+            var that = this;
+
+            SYI.Events.on('Collection:filtered', function(filteredCollection) {
+                that.collection.reset(filteredCollection);
+            });
+        },
+
+        buildChildView: function(child, ChildViewClass, childViewOptions){
+            var that = this;
+
+            var view = new ChildViewClass({
+                'model': child,
+                'listingsCollection': this.options.listingsCollection
+            });
+
+            view.on('Items:modify', function() {
                 that.refreshGrid();
             });
 
-            that.on('Items:modifyAll', function() {
-                itemView.trigger('Item:modifyAll');
+            view.on('Items:save', function() {
+                that.refreshGrid();
             });
 
-            that.on('Items:resellAll', function() {
-                itemView.trigger('Item:resellAll');
+            view.on('InnerViews:load', function() {
+                that.refreshGrid();
             });
-        });
 
-        this.refreshGrid();
-    }
+            return view;
+        },
+
+        refreshGrid: function() {
+            var that = this;
+
+            this.$el.masonry({
+                itemSelector: '.grid-item'
+            });
+
+            this.$el.masonry('reloadItems');   
+            this.$el.masonry('layout');
+        },
+
+
+    });
+
 });
-var Router = Backbone.Router.extend({
-    routes: {
-        "": "index"
-    },
+// Resell.Views.Items = Backbone.View.extend({
 
-    initialize: function() {
-        this.index();
-    },
+//     template: __templates.actions,
 
-    index: function() {
-        var itemsCollection = new Resell.Collections.Items();
-        itemsCollection.fetch({
-            'success': function(collection, response, options){
-                collection.trigger('fetched');
-            }
-        });
+//     events: {
+//         'click [data-js="modifyAll"]': 'modifyAll',
+//         'click [data-js="resellAll"]': 'resellAll',
+//         'change select': 'listingFilter'
+//     },
 
-        var listingsCollection = new Resell.Collections.Listings();
-        listingsCollection.fetch({
-            'success': function(collection, response, options) {
-                collection.trigger('fetched');
-            }
-        });
+//     initialize: function(options){
+//         var that = this;
 
-        var itemsCollectionView = new Resell.Views.Items({
-            collection: itemsCollection,
-            listingsCollection: listingsCollection
-        });
+//         this.listingsCollection = options.listingsCollection;
+        
+//         this.collection.on('fetched', function() {
+//             Resell.Cache.ItemsCollection = new Backbone.Collection(that.collection.toJSON());
+//             that.render();
+//         });
+//     },
 
-        $('#app').html(itemsCollectionView.el);
-    }
+//     render: function(){
+//         var that = this;
+//         this.$el.append(this.template());
+//         this.iterateCollection();
+//     },
+
+//     refreshGrid: function() {
+//         var that = this;
+
+//         this.$el.masonry({
+//             itemSelector: '.grid-item'
+//         });
+
+//         this.$el.masonry('reloadItems');   
+//         this.$el.masonry('layout');
+//     },
+
+//     modifyAll: function() {
+//         this.trigger('Items:modifyAll');
+//         $('[data-js="modifyAll"]').addClass('ch-btn-disabled');
+//         $('[data-js="resellAll"]').removeClass('ch-btn-disabled');
+
+//     },
+
+//     resellAll: function() {
+//         this.trigger('Items:resellAll');
+//         $('[data-js="modifyAll"]').removeClass('ch-btn-disabled');
+//         $('[data-js="resellAll"]').addClass('ch-btn-disabled');
+//     },
+
+//     listingFilter: function(event) {
+//         var that = this,
+//             listingId = event.target.value,
+//             filtered;
+
+//         filtered = Resell.Cache.ItemsCollection.filter(function(model) {
+//             return event.target.value === 'all' ? Resell.Cache.ItemsCollection : model.get("listingId") === listingId;
+//         });
+
+//         this.collection.reset(filtered);
+
+//         this.trigger('ItemViews:remove');
+//         this.$("ul").empty();
+
+//         this.iterateCollection();
+//         this.listingsCollection.trigger('fetched');
+//     },
+
+//     iterateCollection: function() {
+//         var that = this;
+
+//         _.each(this.collection.models, function(model, i){
+//             var itemView = new Resell.Views.Item({
+//                 model: model,
+//                 listingsCollection: that.listingsCollection
+//             });
+
+//             that.$("ul").append(itemView.el);
+
+//             itemView.on('change', function() {
+//                 that.refreshGrid();
+//             });
+
+//             that.on('ItemViews:remove', function() {
+//                 itemView.trigger('ItemsCardViews:remove');
+//                 itemView.remove();
+//             });
+
+//             that.on('Items:modifyAll', function() {
+//                 itemView.trigger('Item:modifyAll');
+//             });
+
+//             that.on('Items:resellAll', function() {
+//                 itemView.trigger('Item:resellAll');
+//             });
+//         });
+
+//         this.refreshGrid();
+//     }
+// });
+// 'use strict';
+
+SYI.module('Resell.Views', function (Views, SYI, Backbone, Marionette, $, _) {
+
+    Views.Main = Marionette.LayoutView.extend({
+
+        template: __templates.resell.main,
+
+        regions: {
+            'actionsRegion': '[data-js="actions"]',
+            'gridRegion': '[data-js="grid"]'
+        },
+
+        events: {},
+
+        onShow: function(options) {
+            var listingsCollection = this.options.listingsCollection,
+                itemsCollectionView,
+                actionsView;
+
+            itemsCollectionView = new Views.Items({
+                collection: this.collection,
+                listingsCollection: listingsCollection
+            });
+            this.gridRegion.show(itemsCollectionView);
+
+            actionsView = new Views.Actions();
+            this.actionsRegion.show(actionsView);
+        }
+
+    });
+
 });
+// var Router = Backbone.Router.extend({
+//     routes: {
+//         "": "index"
+//     },
 
-$(function(){
-    Resell.Router = new Router();
-    Backbone.history.start({pushState: true});
-});
+//     initialize: function() {},
+
+//     index: function() {
+//         var itemsCollection = new Resell.Collections.Items();
+//         itemsCollection.fetch({
+//             'success': function(collection, response, options){
+//                 collection.trigger('fetched');
+//             }
+//         });
+
+//         var listingsCollection = new Resell.Collections.Listings();
+//         listingsCollection.fetch({
+//             'success': function(collection, response, options) {
+//                 collection.trigger('fetched');
+//             }
+//         });
+
+//         var itemsCollectionView = new Resell.Views.Items({
+//             collection: itemsCollection,
+//             listingsCollection: listingsCollection
+//         });
+
+//         $('#app').html(itemsCollectionView.el);
+//     }
+// });
+
+// $(function(){
+//     Resell.Router = new Router();
+//     Backbone.history.start({pushState: true});
+// });
 $.mockjax({
     url: "/items",
     proxyType: "get",

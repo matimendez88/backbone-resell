@@ -51,15 +51,17 @@ gulp.task('templates', function(){
 gulp.task('js-build', function() {
     gulp.src([
         // dependencies
-        'bower_components/jquery/dist/jquery.js',
+        'node_modules/jquery/dist/jquery.js',
         'bower_components/chico/dist/ui/chico.js',
-        'bower_components/handlebars/handlebars.js',
-        'bower_components/underscore/underscore.js',
-        'bower_components/backbone/backbone.js',
+        'node_modules/handlebars/dist/handlebars.js',
+        'node_modules/underscore/underscore.js',
+        'node_modules/backbone/backbone.js',
+        'node_modules/backbone.marionette/lib/backbone.marionette.js',
         'bower_components/masonry/dist/masonry.pkgd.js',
         'bower_components/jquery-mockjax/dist/jquery.mockjax.min.js',
         // app
         'app/app.js',
+        'app/resell.module.js',
         'app/templates/templates.js',
         'app/utils/handlebars-helpers.js',
         'app/models/*.js',
