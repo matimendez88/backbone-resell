@@ -4,8 +4,8 @@ CACHE MANIFEST
 //mercadolibre.github.io/navigation-boilerplate/mercadolibre/logo__large.png
 //mercadolibre.github.io/navigation-boilerplate/mercadolibre/logo__large@2x.png
 //static.mlstatic.com/org-img/ch/ui/1.1.1/chico.min.css
-/build/styles/bundle.css
-/build/scripts/bundle.js
+/backbone-resell/build/styles/bundle.css
+/backbone-resell/build/scripts/bundle.js
 
 
 NETWORK:
