@@ -1,8 +1,16 @@
 CACHE MANIFEST
-#v5
-//mercadolibre.github.io/navigation-boilerplate/mercadolibre/logo__large.png
-//mercadolibre.github.io/navigation-boilerplate/mercadolibre/logo__large@2x.png
-//static.mlstatic.com/org-img/ch/ui/1.1.1/chico.min.css
+#v0.0.1
+mercadolibre.github.io/ui-navigation/mercadolibre/favicon.ico
+mercadolibre.github.io/navigation-boilerplate/dist/mercadolibre/60x60-precomposed.png
+mercadolibre.github.io/navigation-boilerplate/dist/mercadolibre/76x76-precomposed.png
+mercadolibre.github.io/navigation-boilerplate/dist/mercadolibre/120x120-precomposed.png
+mercadolibre.github.io/navigation-boilerplate/dist/mercadolibre/152x152-precomposed.png
+mercadolibre.github.io/navigation-boilerplate/mercadolibre/logo__large.png
+mercadolibre.github.io/navigation-boilerplate/mercadolibre/logo__large@2x.png
+static.mlstatic.com/org-img/ch/ui/1.1.1/chico.min.css
+matimendez88.github.io/backbone-resell/build/styles/bundle.css
+matimendez88.github.io/backbone-resell/build/scripts/bundle.js
+
 
 NETWORK:
 *
