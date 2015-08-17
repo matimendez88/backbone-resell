@@ -12,6 +12,10 @@
     font-style: normal;
 }
 
+[class*=ch-btn] [class*=ch-icon-] {
+    margin: 0;
+}
+
 .app [class^="syi-icon-"]:before,
 .app [class*=" syi-icon-"]:before {
     -webkit-font-smoothing: antialiased;

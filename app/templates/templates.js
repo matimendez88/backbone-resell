@@ -70,7 +70,7 @@ this["__templates"]["resell"]["itemFront"] = Handlebars.template({"compiler":[6,
     + alias3(((helper = (helper = helpers.quantity || (depth0 != null ? depth0.quantity : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"quantity","hash":{},"data":data}) : helper)))
     + "</p>\n    </div>\n    <div class=\"item-listing-container\">\n        <p>Publicación "
     + alias3(((helper = (helper = helpers.listingType || (depth0 != null ? depth0.listingType : depth0)) != null ? helper : alias1),(typeof helper === alias2 ? helper.call(depth0,{"name":"listingType","hash":{},"data":data}) : helper)))
-    + "</p>\n    </div>\n</div>\n<div class=\"item-action-container\">\n    <input type=\"submit\" name=\"\" value=\"Modificar\" class=\"ch-btn ch-btn-large\" data-js=\"modifyBtn\">\n</div>";
+    + "</p>\n    </div>\n</div>\n<div class=\"item-action-container\">\n    <input type=\"submit\" name=\"\" value=\"Modificar\" class=\"ch-btn ch-btn-large\" data-js=\"modifyBtn\">\n    <a href=\"#\" class=\"ch-btn-skin ch-btn-large\" data-js=\"deleteBtn\">\n        <i class=\"ch-icon-trash\"></i>\n    </a>\n</div>";
 },"useData":true});
 this["__templates"]["resell"]["main"] = Handlebars.template({"compiler":[6,">= 2.0.0-beta.1"],"main":function(depth0,helpers,partials,data) {
     return "<div class=\"actions-container\" data-js=\"actions\"></div>\n<div class=\"grid\" data-js=\"grid\"></div>";
