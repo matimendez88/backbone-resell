@@ -273,3 +273,26 @@
 .actions-container .ch-btn:focus {
     outline: none;
 }
+
+@media screen and (max-width: 768px) {
+
+    .actions-container {
+        text-align: center;
+    }
+
+    .actions-container .filters {
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .grid ul {
+        text-align: center;
+    }
+
+    .item-container {
+        margin: 0;
+        padding: 10% 10% 0 10%;
+        width: 100%;
+    }
+
+}
