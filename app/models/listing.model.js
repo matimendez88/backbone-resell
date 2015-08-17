@@ -1,6 +1,6 @@
 'use strict';
 
-SYI.module('Resell.Models', function(Models, SYI, Backbone, Marionette, $, _) {
+SYI.module('Resell.Models', function (Models, SYI, Backbone, Marionette, $, _) {
 
 	Models.Listing = Backbone.Model.extend({
 	    urlRoot: '/listings',
