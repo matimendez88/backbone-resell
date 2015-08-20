@@ -36,6 +36,11 @@ SYI.module('Resell.Views', function (Views, SYI, Backbone, Marionette, $, _) {
                 that.refreshGrid();
             });
 
+            view.on('Item:delete', function(modelId) {
+                that.refreshGrid();
+                SYI.Resell.Cache.Collections.Items.remove(modelId);
+            });
+
             return view;
         },
 

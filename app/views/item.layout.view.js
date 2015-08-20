@@ -32,6 +32,7 @@ SYI.module('Resell.Views', function (Views, SYI, Backbone, Marionette, $, _) {
                 model: this.model,
                 listingsCollection: listingsCollection
             });
+
             this.cardBackRegion.show(itemBackView);
 
             this.trigger('InnerViews:load');
@@ -39,6 +40,11 @@ SYI.module('Resell.Views', function (Views, SYI, Backbone, Marionette, $, _) {
             itemFrontView.on('Item:modify', function() {
                 that.flipCard();
                 that.trigger('Items:modify');
+            });
+
+            itemFrontView.on('Item:delete', function(modelId) {
+                that.dispose();
+                that.trigger('Item:delete', modelId);
             });
 
             itemBackView.on('Item:save', function() {
@@ -58,8 +64,18 @@ SYI.module('Resell.Views', function (Views, SYI, Backbone, Marionette, $, _) {
 
         flipCard: function() {
             this.$el.addClass('flip');
-        }
+        },
 
+        dispose: function() {
+            // same as this.$el.remove();
+            this.destroy();
+            // unbind events that are
+            // set on this view
+            // this.off();
+            // remove all models bindings
+            // made by this view
+            // this.model.off( null, null, this );
+        }
     });
 
 });

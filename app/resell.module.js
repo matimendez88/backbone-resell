@@ -26,7 +26,7 @@ SYI.module('Resell', function (Resell, SYI, Backbone, Marionette, $, _) {
                 }
             });
 
-            itemsCollection = new Resell.Collections.Items();				
+            itemsCollection = new Resell.Collections.Items();
             itemsCollection.fetch({
                 'success': function(collection, response, options){
                     SYI.Resell.Cache.Collections.Items = _.extend({}, collection);
