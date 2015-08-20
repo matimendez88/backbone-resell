@@ -32,6 +32,7 @@ SYI.module('Resell.Views', function (Views, SYI, Backbone, Marionette, $, _) {
                 model: this.model,
                 listingsCollection: listingsCollection
             });
+
             this.cardBackRegion.show(itemBackView);
 
             this.trigger('InnerViews:load');
@@ -67,15 +68,14 @@ SYI.module('Resell.Views', function (Views, SYI, Backbone, Marionette, $, _) {
 
         dispose: function() {
             // same as this.$el.remove();
-            this.remove();
+            this.destroy();
             // unbind events that are
             // set on this view
             // this.off();
             // remove all models bindings
             // made by this view
-            this.model.off( null, null, this );
+            // this.model.off( null, null, this );
         }
-
     });
 
 });

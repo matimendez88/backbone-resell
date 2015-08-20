@@ -14,6 +14,11 @@ SYI.module('Resell.Models', function (Models, SYI, Backbone, Marionette, $, _) {
             'sells': null,
             'listingId': null,
             'listingType': null
+        },
+        initialize: function(){
+            this.on('remove', function(model) {
+                model.destroy();
+            });
         }
     });
 
